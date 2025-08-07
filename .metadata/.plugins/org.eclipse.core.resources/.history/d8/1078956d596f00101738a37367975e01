@@ -1,0 +1,36 @@
+package com.day_12_JDBC;
+import java.sql.*;
+
+public class DBConnect {
+
+	public static void main(String[] args) {
+		
+		try {
+			//Load drivers
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			//Establish connection
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wipro","root","Venkat1122@");
+
+			System.out.println("connected sucessfully");
+			
+			Statement stmt = con.createStatement();
+			
+			String sql="CREATE TABLE IF NOT EXISTS STUDENT("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+			             +"nane VARCHAR(100), "+"age INT,"+" course VARCHAR(100))";
+			
+			stmt.executeUpdate(sql);
+			
+			System.out.println("Table Student is created");
+			
+			
+			stmt.close();
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+
+}

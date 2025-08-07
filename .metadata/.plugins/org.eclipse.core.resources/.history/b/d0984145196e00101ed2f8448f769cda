@@ -1,0 +1,13 @@
+package com.day_11;
+import java.io.File;
+
+
+public class FileHandling_Ex {
+
+	public static void main(String[] args) {
+		File f=new File("C:\\Users\\ponug\\Desktop\\fileHandling\\practice.txt");
+		System.out.println("f.createNewFile");
+
+	}
+
+}

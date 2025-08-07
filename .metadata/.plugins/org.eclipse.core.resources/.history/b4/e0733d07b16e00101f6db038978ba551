@@ -1,0 +1,24 @@
+package com.day_12_JDBC;
+import java.sql.*;
+
+public class DBConnect {
+
+	public static void main(String[] args) {
+		
+		try {
+			//Load jdbc driver
+			Class.forName("");
+			
+			Connection con = DriverManager.getConnection("");
+			
+			System.out.println("connected sucess");
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+
+}

@@ -1,0 +1,131 @@
+package com.day_9;
+import java.util.*;
+
+class Patient {
+    String id;
+    String name;
+
+    Patient(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String toString() {
+        return "ID: " + id + ", Name: " + name;
+    }
+}
+
+public class LinkedList_HospitalQueue {
+    public static void main(String[] args) {
+        LinkedList<Patient> patientQueue = new LinkedList<>();
+        Set<String> patientIds = new HashSet<>(); 
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n Hospital Patient Queue Menu:");
+            System.out.println("1. Add New Patient (Normal)");
+            System.out.println("2. Add Emergency Patient");
+            System.out.println("3. Remove First Patient");
+            System.out.println("4. View All Patients");
+            System.out.println("5. View First and Last Patient");
+            System.out.println("6. Cancel Appointment id");
+            System.out.println("7. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine(); 
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter patient ID: ");
+                    String id = sc.nextLine();
+                    if (patientIds.contains(id)) {
+                        System.out.println("Patient already exists.");
+                        break;
+                    }
+                    System.out.print("Enter patient name: ");
+                    String name = sc.nextLine();
+                    Patient p = new Patient(id, name);
+                    patientQueue.addLast(p);
+                    patientIds.add(id);
+                    System.out.println("Patient added to normal queue.");
+                    break;
+
+                case 2:
+                    System.out.print("Enter emergency patient id: ");
+                    String eid = sc.nextLine();
+                    if (patientIds.contains(eid)) {
+                        System.out.println("Patient already exists.");
+                        break;
+                    }
+                    System.out.print("Enter emergency patient name: ");
+                    String ename = sc.nextLine();
+                    Patient ep = new Patient(eid, ename);
+                    patientQueue.addFirst(ep);
+                    patientIds.add(eid);
+                    System.out.println("Emergency patient added front queue.");
+                    break;
+
+                case 3:
+                    if (!patientQueue.isEmpty()) {
+                        Patient removed = patientQueue.removeFirst();
+                        patientIds.remove(removed.id);
+                        System.out.println("removed patient: " + removed);
+                    } else {
+                        System.out.println("No patients in the queue.");
+                    }
+                    break;
+
+                case 4:
+                    if (patientQueue.isEmpty()) {
+                        System.out.println("No patients in queue.");
+                    } else {
+                        System.out.println("Current Patient Queue:");
+                        for (Patient pat : patientQueue) {
+                            System.out.println(pat);
+                        }
+                    }
+                    break;
+
+                case 5:
+                    if (!patientQueue.isEmpty()) {
+                        System.out.println("First " + patientQueue.getFirst());
+                        System.out.println("Last " + patientQueue.getLast());
+                    } else {
+                        System.out.println("Queue is empty.");
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Enter patient id to cancel: ");
+                    String cancelId = sc.nextLine();
+                    boolean found = false;
+                    Iterator<Patient> itr = patientQueue.iterator();
+                    while (itr.hasNext()) {
+                        Patient pat = itr.next();
+                        if (pat.id.equals(cancelId)) {
+                            itr.remove();
+                            patientIds.remove(pat.id);
+                            found = true;
+                            System.out.println("Appointment cancelled id: " + cancelId);
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("No patient found with id: " + cancelId);
+                    }
+                    break;
+
+                case 7:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+
+        } while (choice != 7);
+
+        sc.close();
+    }
+}

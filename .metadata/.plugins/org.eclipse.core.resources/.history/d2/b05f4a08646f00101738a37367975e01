@@ -1,0 +1,98 @@
+package com.day_12_JDBC;
+import java.sql.*;
+import java.util.ArrayList;
+class patients{
+	String Name;
+	int age;
+	String disease;
+	
+	public patients(String Name, int age, String disease) {
+		this.Name = Name;
+		this.age= age;
+		this.disease= disease;
+	}
+}
+
+public class DBConnect {
+
+	public static void main(String[] args) {
+		
+		ArrayList<patients> patientList = new ArrayList<>();
+		
+		patientList.add(new patients("chari", 22, "fever"));
+		patientList.add(new patients("ragava", 26, "cold"));
+		patientList.add(new patients("praveen", 24, "headache"));
+		
+		try {
+			//Load drivers
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			//Establish connection
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wipro","root","Venkat1122@");
+
+			System.out.println("connected sucessfully");
+			
+//			Statement stmt = con.createStatement();
+			
+//			String sql="CREATE TABLE IF NOT EXISTS PATIENT("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+//			             +"nane VARCHAR(100), "+"age INT,"+" disease VARCHAR(100))";
+			
+//			stmt.executeUpdate(sql);
+			
+//			System.out.println("Table Patient is created");
+			
+			
+//			stmt.close();
+			
+			//insert details
+//			String insert = "INSERT INTO PATIENT(nane,age,disease) VALUES(?,?,?)";
+			
+						
+//			pstmt.setString(1, "venkat");
+//			pstmt.setInt(2, 30);
+//			pstmt.setString(3, "cough");
+//			
+//			int rowsInserted = pstmt.executeUpdate();
+//			
+//			if(rowsInserted>0) {
+//				System.out.println("Patient details inserted");
+//			}
+			
+//			String[][] data = {
+//					{"Ram", "22","cold"},
+//					{"Ravi", "23","pain"},
+//					{"Reddy", "25","headche"}
+//			};
+			
+//			for (patients p: patientList) {
+//				pstmt.setString(1, p.Name);
+//				pstmt.setInt(2, p.age);
+//				pstmt.setString(3, p.disease);
+//				pstmt.executeUpdate();
+//			}
+//			
+//			
+//			System.out.println(" All Patients details inserted");
+			
+			//update details
+            
+			String update = "UPDATE PATIENT SET nane=? WHERE nane=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(update);
+
+			
+			pstmt.setString(1, "Ramireddy");
+			pstmt.setString(2, "venkat");
+			int rowsUpdated=pstmt.executeUpdate();
+		
+			System.out.println(" Patient details updated");
+			
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+
+}

@@ -1,0 +1,26 @@
+package com.day_13;
+
+public class Patients {
+	String name;
+	int age;
+	String disease;
+	String AdmissionDate;
+	String doctor;
+	
+	 public Patients(String name, int age, String disease, String AdmissionDate, String doctorAssigned)
+	 {
+	     this.name = name;
+	     this.age = age;
+	     this.disease = disease;
+	     this.AdmissionDate = AdmissionDate;
+	     this.doctor = doctorAssigned;
+	 }
+	 
+	 public String toString() 
+	 {
+		 return  name+" " + age+ " " + disease + " " + AdmissionDate + " " + doctor; 
+	}
+	 
+	
+
+}

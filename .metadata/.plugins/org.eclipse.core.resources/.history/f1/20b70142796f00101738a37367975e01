@@ -1,0 +1,22 @@
+package com.day_13;
+import java.sql.*;
+
+public class DBConnect {
+
+	public static void main(String[] args) throws SQLException {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wipro","root","Venkat1122@");
+
+			System.out.println("connected sucessfully");
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

@@ -1,0 +1,146 @@
+package com.day_9;
+
+import java.util.*;
+
+class Patient {
+    String id;
+    String name;
+
+    Patient(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String toString() {
+        return "ID: " + id + ", Name: " + name;
+    }
+}
+
+public class LinkedList_HospitalQueue {
+    public static void main(String[] args) {
+        LinkedList<Patient> patientQueue = new LinkedList<>();
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        final int ESTIMATED_TIME_PER_PATIENT = 10; // in minutes
+
+        do {
+            System.out.println("\n--- Hospital Patient Queue ---");
+            System.out.println("1. Add New Patient (Normal)");
+            System.out.println("2. Add Emergency Patient");
+            System.out.println("3. Remove Next Patient");
+            System.out.println("4. View All Patients (Sorted by Name)");
+            System.out.println("5. View First and Last Patient");
+            System.out.println("6. Cancel Appointment (Remove by ID)");
+            System.out.println("7. Estimate Average Waiting Time");
+            System.out.println("8. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Patient ID: ");
+                    String id = sc.nextLine();
+                    if (isDuplicate(patientQueue, id)) {
+                        System.out.println("❌ Patient ID already exists!");
+                        break;
+                    }
+                    System.out.print("Enter Patient Name: ");
+                    String name = sc.nextLine();
+                    patientQueue.addLast(new Patient(id, name));
+                    System.out.println("✅ Patient added to queue.");
+                    break;
+
+                case 2:
+                    System.out.print("Enter Emergency Patient ID: ");
+                    String eid = sc.nextLine();
+                    if (isDuplicate(patientQueue, eid)) {
+                        System.out.println("❌ Patient ID already exists!");
+                        break;
+                    }
+                    System.out.print("Enter Emergency Patient Name: ");
+                    String ename = sc.nextLine();
+                    patientQueue.addFirst(new Patient(eid, ename));
+                    System.out.println("⚠️ Emergency patient added to front.");
+                    break;
+
+                case 3:
+                    if (!patientQueue.isEmpty()) {
+                        Patient removed = patientQueue.removeFirst();
+                        System.out.println("🗑️ Removed: " + removed);
+                    } else {
+                        System.out.println("Queue is empty.");
+                    }
+                    break;
+
+                case 4:
+                    if (patientQueue.isEmpty()) {
+                        System.out.println("No patients in queue.");
+                    } else {
+                        List<Patient> sortedList = new ArrayList<>(patientQueue);
+                        sortedList.sort(Comparator.comparing(p -> p.name.toLowerCase()));
+                        System.out.println("📋 Sorted Patient List:");
+                        for (Patient p : sortedList) {
+                            System.out.println(p);
+                        }
+                    }
+                    break;
+
+                case 5:
+                    if (!patientQueue.isEmpty()) {
+                        System.out.println("🔼 First: " + patientQueue.getFirst());
+                        System.out.println("🔽 Last: " + patientQueue.getLast());
+                    } else {
+                        System.out.println("Queue is empty.");
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Enter Patient ID to cancel: ");
+                    String cancelId = sc.nextLine();
+                    boolean removed = removeById(patientQueue, cancelId);
+                    if (removed) {
+                        System.out.println("🗑️ Appointment cancelled.");
+                    } else {
+                        System.out.println("❌ Patient ID not found.");
+                    }
+                    break;
+
+                case 7:
+                    int total = patientQueue.size();
+                    int avgTime = total * ESTIMATED_TIME_PER_PATIENT;
+                    System.out.println("⏱️ Estimated Average Waiting Time: " + avgTime + " minutes");
+                    break;
+
+                case 8:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice.");
+            }
+
+        } while (choice != 8);
+
+        sc.close();
+    }
+
+    static boolean isDuplicate(LinkedList<Patient> queue, String id) {
+        for (Patient p : queue) {
+            if (p.id.equals(id)) return true;
+        }
+        return false;
+    }
+
+    static boolean removeById(LinkedList<Patient> queue, String id) {
+        Iterator<Patient> iterator = queue.iterator();
+        while (iterator.hasNext()) {
+            Patient p = iterator.next();
+            if (p.id.equals(id)) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+}

@@ -1,0 +1,25 @@
+Test Case ID,Test case Title ,Module Name,Test Designed By       ,Test Designed Date,Pre-Condition,Test Data,Test Steps,Expected Results  ,Actual Results,Status(Pass/Fail),Severity,Priority,Environment,Comment/Notes
+TC_Product_Image_Neg01,checking product image ,L  shape sofa in Furniture&Upolstery ,TeamB,8-Aug,User Must have account,No  input data required,Furniture & Upholstery/L shape Sofa,Display products with Images,Product images are missing,pass,Medium,High,,
+TC_Catalog_Neg02,Phone Number Field Validation,Request Catalog – Phone Number,Team B,8-Aug-25,User is on the “Request Catalog” popup form.,Phone Number: 321  ,"Open the ""Request Catalog"" form.","""Please enter a valid phone number""",Accepting the Form,pass,Low,Low,,
+TC_ContactUs_Neg03,Verify input formatting for Azerbaijan in Contact Us page,Contact Us Form,Team B,8-Aug-25,user should be on contact us page,NA,1. Go to contact us page.  2.Enter ph:321 in the phone number field.  3.Enter ph:321 in the phone number field. 4.Select country code as:+91 5.Fill in all other required fields correctly. 6.Click “Send Catalog,It should be in proper format same as other countries and map should be there,Not in proper format and also map is not showing ,Pass,Low,Medium,,
+TC_Account_Address_Neg04,Verify address form submission error,MyAccount_Address,TeamB,8-Aug-25,"User is logged in and on the ""My Account"" section",Enter Details in the address,,The address should be saved and shown in the account section,"On clicking “Save Address” with invalid data, error appears.
+On navigating back to the address section or due to auto-refresh, entire form resets and input is lost.",pass,High,High,,
+TC_Payment_Neg05,Proceed to pay,CheckOut,TeamB,8-Aug,User Must have account,No  input data required,AddCart/CheckOut/Proceed to pay,Redirect for Payment,Invalid Server response Formate,pass,High,High,,
+TC_Curtains_Neg06,Verify behavior of product adding to wishlist ,Home Textile,TeamB,8-Aug,User Must have account,No  input data required,Home Textile/ Main Curtains and Chiffon with Blinds/Curtains,should be added to WishList,the product is not added to wishlist and showing inavlid requst,pass,medium,High,,
+TC_WhatsApp_Neg07,WhatsApp Order Message Not Formatted,Placing Order Through Watsapp,Team B,8-Aug-25,Product is selected for order,Any product,"1.Open product page or cart
+2. Click Write to us or order on WhatsApp
+3. Wait for WhatsApp to open
+4. Observe the pre-filled message","Hello, I'm interested in Product Name, Price: and  Link: ",WhatsApp shows: Not a valid format,pass,High,High,,
+TC_CART_Neg08,Duplicate products added to the cart,Shopping Cart,Team B,8-Aug-25,Product added once to the cart,Any product,"Go to product page/Click ""Add to Cart""/Click again","Show message: ""Already in cart""",Two separate entries for same product,pass,Medium,High,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,

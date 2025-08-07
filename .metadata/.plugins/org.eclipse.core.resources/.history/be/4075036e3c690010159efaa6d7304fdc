@@ -1,0 +1,44 @@
+package com.day_5;
+
+class Employee {
+    String name;
+    double salary;
+
+    // Implicit constructor (not written) is available by default
+    // But if we add any constructor, implicit is no longer available
+    // So we’ll write it explicitly
+    Employee() {
+        name = "Default";
+        salary = 0.0;
+    }
+
+    // Explicit constructor
+    Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Copy constructor
+    Employee(Employee e) {
+        this.name = e.name;
+        this.salary = e.salary;
+    }
+}
+
+public class ImpConstructor {
+    public static void main(String[] args) {
+        // Using explicit constructor
+        Employee emp1 = new Employee("Venkat", 40000);
+
+        // Using copy constructor
+        Employee emp2 = new Employee(emp1);
+
+        // Using implicit (default) constructor
+        Employee emp3 = new Employee();
+
+        // Display
+        System.out.println("Employee 1: " + emp1.name + ", " + emp1.salary);
+        System.out.println("Employee 2 (copy): " + emp2.name + ", " + emp2.salary);
+        System.out.println("Employee 3 (default): " + emp3.name + ", " + emp3.salary);
+    }
+}

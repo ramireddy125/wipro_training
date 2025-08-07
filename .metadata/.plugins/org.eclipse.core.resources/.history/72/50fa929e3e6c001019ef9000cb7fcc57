@@ -1,0 +1,96 @@
+package com.day_9;
+import java.util.*;
+
+class patient{
+	String Name;
+	int age;
+	String disease;
+	
+	public patient(String Name, int age, String disease) {
+		this.Name= Name;
+		this.age=age;
+		this.disease= disease;	
+	}
+	public String toString() 
+	{
+	    return "Name: " + Name + ", Age: " + age + ", Disease: " + disease;
+	 }
+}
+public class LinkedList_HospitalQueue {
+
+	public static void main(String[] args) {
+		LinkedList<String> l1 = new LinkedList<>();
+		Scanner sc=new Scanner(System.in);
+		int choice;
+		
+		do {
+			System.out.println("\n🔹 HOSPITAL QUEUE SYSTEM 🔹");
+            System.out.println("1. Add Normal Patient");
+            System.out.println("2. Add Emergency Patient");
+            System.out.println("3. Serve First Patient");
+            System.out.println("4. View All Patients");
+            System.out.println("5. View First and last Patient");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+            
+            switch(choice) {
+            case 1: 
+            	System.out.println("Enter patient name:");
+            	String patient = sc.nextLine();
+            	System.out.print("Enter Age: ");
+                int age = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Enter Disease: ");
+                String disease = sc.nextLine();
+            	l1.add(patient);
+            	System.out.println("Added to Queue.");
+            	break;
+            	
+            case 2:
+            	System.out.print("Enter Emergency Patient Name: ");
+                String eName = sc.nextLine();
+                System.out.print("Enter Age: ");
+                int eAge = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Enter Disease: ");
+                String eDisease = sc.nextLine();
+                l1.add(patient);
+            	System.out.println("Added emergy patient to Queue.");
+            	break;
+            	
+            case 3:
+            	if(l1.isEmpty()) {
+            		System.out.println("queue is empty");
+            	}else {
+            		String remove= l1.removeFirst();
+            		System.out.println("patient removed:"+remove);
+            	}
+            	break;
+            case 4:
+            	System.out.println("current Queue:"+l1);
+            	break;
+            	
+            case 5:
+            	if(!l1.isEmpty()) {
+            		System.out.println("First:"+ l1.getFirst());
+            		System.out.println("Last:"+ l1.getLast());
+            	}else {
+            		System.out.println("queue is empty");
+            	}
+            	break;
+            case 6:
+            	System.out.println("Exiting.....");
+            	break;
+            	
+            default :
+            	System.out.println("Invaild choice");
+            } 
+		}while(choice!=6); 
+		
+		sc.close();
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.day_12;
+
+public class Serilization_Ex {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

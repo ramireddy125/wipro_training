@@ -1,0 +1,28 @@
+package com.day_12_JDBC;
+import java.sql.*;
+
+public class DBConnect {
+
+	public static void main(String[] args) {
+		
+		try {
+			//Load drivers
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			//Establish connection
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wipro","root","Venkat1122@");
+
+
+			System.out.println("connected sucess");
+			
+	
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+
+}

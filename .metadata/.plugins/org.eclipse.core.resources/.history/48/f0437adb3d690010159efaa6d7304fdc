@@ -1,0 +1,54 @@
+package com.day_5;
+
+class Person {
+    String name;
+
+    // Explicit constructor
+    Person(String name) {
+        this.name = name; // 'this' refers to current object's name
+    }
+}
+
+class Emp extends Person {
+    double salary;
+
+    // Explicit constructor using 'super' to call parent constructor
+    Emp(String name, double salary) {
+        super(name);        // Calls Person's constructor
+        this.salary = salary;  // Refers to current class's salary
+    }
+
+    // Copy constructor
+    Emp(Emp e) {
+        super(e.name);         // Call parent class copy logic
+        this.salary = e.salary;
+    }
+
+    // Default constructor
+    Emp() {
+        super("Default");     // Default name
+        this.salary = 0.0;    // Default salary
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Salary: " + salary);
+    }
+}
+
+public class ImpConstructor {
+    public static void main(String[] args) {
+        // Using explicit constructor
+        Emp emp1 = new Emp("Venkat", 40000);
+
+        // Using copy constructor
+        Emp emp2 = new Emp(emp1);
+
+        // Using default constructor
+        Emp emp3 = new Emp();
+
+        // Display all
+        emp1.display();
+        emp2.display();
+        emp3.display();
+    }
+}

@@ -1,0 +1,113 @@
+package com.day_12;
+import java.io.*;
+import java.util.*;
+import java.util.ArrayList;
+
+
+class Patient implements Serializable //marker interface(means no methods or fields)
+{
+	int id;
+	String name;
+	String disease;
+	int age;
+	public Patient(int id, String name, String disease, int age)
+	{
+	this.id=id;
+	this.name=name;
+	this.disease=disease;
+	this.age=age;
+    }
+ 
+	public String toString()
+	{
+		return id + " - "+ name + " - " + disease + " - " + age;
+	}
+}
+public class Serilization_Ex
+{
+	public static void main(String[] args)
+	{
+		
+		 Scanner sc = new Scanner(System.in);
+	     ArrayList<Patient> patientList = new ArrayList<>();
+	     String filePath = "C:\\Users\\ponug\\Desktop\\fileHandling\\patients.dat";
+
+	     
+	     int choice;
+	        do {
+	            System.out.println("\n1. Add Patient");
+	            System.out.println("2. View Patients");
+	            System.out.println("3. Serialize (Save to File)");
+	            System.out.println("4. Deserialize (Load from File)");
+	            System.out.println("5. Exit");
+	            System.out.print("Enter choice: ");
+	            choice = sc.nextInt();
+	            sc.nextLine();
+	            
+	            switch (choice) {
+                case 1:
+                    System.out.print("Enter Patient ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter Disease: ");
+                    String disease = sc.nextLine();
+
+                    System.out.print("Enter Age: ");
+                    int age = sc.nextInt();
+
+                    patientList.add(new Patient(id, name, disease, age));
+                    System.out.println("Patient added successfully.");
+                    break;
+                    
+                case 2:
+                    System.out.println("All Patients:");
+                    if (patientList.isEmpty()) {
+                        System.out.println("No records found.");
+                    } else {
+                        for (Patient p : patientList) {
+                            System.out.println(p);
+                        }
+                    }
+                    break;
+                    
+                case 3:
+                    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))) {
+                        out.writeObject(patientList);
+                        System.out.println("Patients serialized (saved to file).");
+                    } catch (IOException e) {
+                        System.out.println("Error while saving: " + e.getMessage());
+                    }
+                    break;
+
+                case 4:
+                    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
+                        patientList = (ArrayList<Patient>) in.readObject();
+                        System.out.println("Patients deserialized (loaded from file).");
+                    } catch (Exception e) {
+                        System.out.println("Error while loading: " + e.getMessage());
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Exiting the program.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+
+ 
+		}
+	}
+	
+ 
+ 
+ 

@@ -1,0 +1,22 @@
+package com.day_13;
+import java.sql.*;
+import java.util.Scanner;
+
+public class PatientServices {
+	Connection con;
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public PatientServices {
+		try 
+		{
+			con = DBConnect.connect();
+			Statement stmt = con.createStatement();
+				
+			String sql="CREATE TABLE IF NOT EXISTS HOSPATIENT("+"id INT PRIMARY KEY AUTO_INCREMENT,"
+				             +"name VARCHAR(100), "+"age INT,"+" disease VARCHAR(100), "+"AdmissionDate DATE, "+"Doctor VARCHAR(100))";
+				
+			stmt.executeUpdate(sql);
+		}
+	}
+}

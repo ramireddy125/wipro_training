@@ -1,0 +1,58 @@
+package com.day_6;
+
+class TicketBooking {
+    int availableSeats = 1;
+
+    public synchronized void bookTicket(String name) {
+        if (availableSeats > 0) {
+            System.out.println(name + " is booking ticket...");
+            try {
+                Thread.sleep(1000); // Simulating booking delay
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+            System.out.println(name + " successfully booked the ticket!");
+            availableSeats--;
+        } else {
+            System.out.println("Sorry " + name + ", seat already booked!");
+        }
+    }
+}
+
+class Users extends Thread {
+    TicketBooking booking;
+    String userName;
+	public double balance;
+
+    public Users(TicketBooking booking, String userName) {
+        this.booking = booking;
+        this.userName = userName;
+    }
+
+    public void run() {
+        booking.bookTicket(userName);
+    }
+}
+
+public class TicketBookingSystem {
+    public static void main(String[] args) {
+        TicketBooking booking = new TicketBooking();
+
+        Users user1 = new Users(booking, "Renu");
+        Users user2 = new Users(booking, "Sai");
+        Users user3 = new Users(booking, "Mahasa");
+
+        try {
+            user1.start();
+            user1.join(); // Wait until user1 finishes
+
+            user2.start();
+            user2.join(); // Wait until user2 finishes
+
+            user3.start();
+            user3.join(); // Wait until user3 finishes
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+}
