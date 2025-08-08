@@ -7,7 +7,7 @@ class TicketBooking {
         if (availableSeats > 0) {
             System.out.println(name + " is booking ticket...");
             try {
-                Thread.sleep(1000); // Simulating booking delay
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
@@ -31,7 +31,7 @@ class Users extends Thread {
     }
 
     public Users(int i, int j) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void run() {
@@ -43,9 +43,9 @@ public class TicketBookingSystem {
     public static void main(String[] args) {
         TicketBooking booking = new TicketBooking();
 
-        Users user1 = new Users(booking, "Renu");
-        Users user2 = new Users(booking, "Sai");
-        Users user3 = new Users(booking, "Mahasa");
+        Users user1 = new Users(booking, "venkat");
+        Users user2 = new Users(booking, "ram");
+        Users user3 = new Users(booking, "reddy");
 
         try {
             user1.start();

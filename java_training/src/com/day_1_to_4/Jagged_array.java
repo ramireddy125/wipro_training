@@ -32,8 +32,9 @@ public class Jagged_array
 	        }
 	       
 	      
-	        for (int i = 0; i < numStudents; i++) {
-	            System.out.println(students[i] + " has subjects:");
+	        for (int i = 0; i < numStudents; i++) 
+	        {
+	            System.out.println(students[i] + "subjects:");
 	            for (int j = 0; j < subjects[i].length; j++) {
 	                System.out.println(" - " + subjects[i][j]);
 	            }

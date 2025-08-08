@@ -11,7 +11,7 @@ public class poly_Ex {
         System.out.println("Enter message to send:");
         String message = scanner.nextLine();
 
-        System.out.println("Choose message type (1 - Email, 2 - SMS):");
+        System.out.println("Choose message type 1 - Email, 2 - SMS:");
         int choice = scanner.nextInt();
 
         MessageSender sender;

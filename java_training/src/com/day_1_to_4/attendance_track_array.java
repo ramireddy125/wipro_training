@@ -7,7 +7,7 @@ public class attendance_track_array {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		String[] days = {"mon","tus","wed","thu","fri","sat","sun"};
+		String[] days = {"mon","tus","wed","thu","fri","sat"};
 		String[] attendance = new String[7];
 		
 		System.out.println("mark attendance for each day as p or a:");

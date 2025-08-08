@@ -51,7 +51,7 @@ public class ScoreBoard {
             if (diff == 0) {
                 System.out.println(name + ": Top Scorer!");
             } else {
-                System.out.println(name + ": " + diff + " point(s) behind");
+                System.out.println(name + ": " + diff + " points behind");
             }
         }
 

@@ -5,18 +5,24 @@ public class BankServicelmpl implements BankServices {
     private int count = 0;
 
     public void registerCustomer(Customer customer) {
-        if (count < customers.length) {
+    	
+        if (count < customers.length) 
+        {
             customers[count++] = customer;
             System.out.println("Customer registered successfully.");
-        } else {
+        } else 
+        {
             System.out.println("Customer list full. Cannot register more.");
         }
     }
     
-    public void deposit(int customerId, double amount) {
+    public void deposit(int customerId, double amount) 
+    {
         boolean found = false;
-        for (int i = 0; i < count; i++) {
-            if (customers[i].getId() == customerId) {
+        for (int i = 0; i < count; i++)
+        {
+            if (customers[i].getId() == customerId)
+            {
                 customers[i].getAccount().deposit(amount);
                 found = true;
                 break;
@@ -27,10 +33,13 @@ public class BankServicelmpl implements BankServices {
         }
     }
     
-    public void withdraw(int customerId, double amount) {
+    public void withdraw(int customerId, double amount)
+    {
         boolean found = false;
-        for (int i = 0; i < count; i++) {
-            if (customers[i].getId() == customerId) {
+        for (int i = 0; i < count; i++) 
+        {
+            if (customers[i].getId() == customerId) 
+            {
                 customers[i].getAccount().withdraw(amount);
                 found = true;
                 break;
@@ -41,18 +50,14 @@ public class BankServicelmpl implements BankServices {
         }
     }
 
-	@Override
-	public void showBalance(int customerId) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void showAllCustomers() 
+    {
+        for (int i = 0; i < count; i++) 
+        {
+            customers[i].displayDetails();
+        }
+    }
 
-	@Override
-	public void showCustomerDetails(int customerId) {
-		// TODO Auto-generated method stub
-		
-	}
-    
     
     
 

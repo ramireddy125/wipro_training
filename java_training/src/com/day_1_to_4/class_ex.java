@@ -5,20 +5,20 @@ public class class_ex {
 	String model;
 	int speed;
 	
-	void start() //no r no p
+	void start() 
 	{
 		System.out.println("car is stareted");
 	}
 	
-	void greet(String name) //no r with p
+	void greet(String name) 
 	{
 		System.out.println("Hi"+name);
 	}
-	int getluckyno() //with r no p
+	int getluckyno() 
 	{
 		return 10;
 	}
-	int add(int a,int b) //with r with p
+	int add(int a,int b) 
 	{
 		return a+b;
 	}
