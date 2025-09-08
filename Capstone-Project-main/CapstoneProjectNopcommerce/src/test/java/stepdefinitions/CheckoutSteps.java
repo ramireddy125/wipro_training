@@ -16,16 +16,15 @@ public class CheckoutSteps {
 
 	@When("I complete the checkout form")
 	public void i_complete_the_checkout_form() throws InterruptedException {
-		// Hardcoded test values
-		checkoutPage.fillCheckoutForm("John", // First Name
-				"Doe", // Last Name
-				"john.doe@example.com", // Email
+		checkoutPage.fillCheckoutForm("venkat", // First Name
+				"ram", // Last Name
+				"venkat.doe@example.com", // Email
 				"India", // Country
-				"Bhubaneswar", // City
-				"Odisha", // State
+				"Telangana", // City
+				"hyd", // State
 				"123 Main Street", // Address
-				"751024", // Zip Code
-				"9876543210" // Phone
+				"500085", // Zip Code
+				"123456789" // Phone
 		);
 	}
 

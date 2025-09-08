@@ -32,14 +32,14 @@ public class LoginSteps {
 
 	@When("I enter correct email and wrong password")
 	public void i_enter_correct_email_and_wrong_password() {
-		login.enterEmail("valid_email@example.com");
+		login.enterEmail("correct@example.com");
 		login.enterPassword("WrongPassword");
 	}
 
 	@When("I enter unregistered email and any password")
 	public void i_enter_unregistered_email_and_any_password() {
-		login.enterEmail("unregistered@example.com");
-		login.enterPassword("AnyPassword123");
+		login.enterEmail("Invalid@example.com");
+		login.enterPassword("Invalid@123");
 	}
 
 	@When("I click on the login button")

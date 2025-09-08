@@ -17,8 +17,7 @@ public class ProductPage {
         productLink.click();
 
 
-        WebElement wishlistButton = DriverFactory.getDriver()
-                .findElement(By.id("add-to-wishlist-button-4"));
+        WebElement wishlistButton = DriverFactory.getDriver().findElement(By.id("add-to-wishlist-button-4"));
         DriverFactory.waitForElementClickable(wishlistButton, 10);
         wishlistButton.click();
     }

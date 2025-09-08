@@ -34,7 +34,6 @@ public class RegistrationSteps {
 
 	@When("I enter an existing email, strong password and matching confirm password")
 	public void i_enter_existing_email_details() {
-//		page.clickLogout();
 		page.goToRegisterPage();
 		page.selectGender();
 		page.enterFirstname("venkat");
@@ -72,7 +71,7 @@ public class RegistrationSteps {
 		page.selectGender();
 		page.enterFirstname("venkat");
 		page.enterLastname("Ram");
-		page.enterEmail("john" + System.currentTimeMillis() + "@gmail.com");
+		page.enterEmail("venkat" + System.currentTimeMillis() + "@gmail.com");
 		page.enterPassword("Pass1234");
 		page.enterConfirmPassword("Pass12345");
 	}
